@@ -1,0 +1,134 @@
+*{padding:0;margin:0;border:0;}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+:focus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+nav,footer,header,aside{display:block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+ul li{list-style:none;}
+img{vertical-align:top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body{
+	background: hsl(231, 48%, 56%);
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+}
+.container{
+	width: 300px;
+	background: rgb(81, 76, 76, 0.27);
+	border: 1px white solid;
+	margin: 0 auto;
+	margin-top:35% ;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+
+.container h1{
+	text-align: center;
+	margin: 10px 0;
+	color: white;
+	font-size: 24px;
+}
+
+.field{
+	width: 80%;
+	
+	margin: 30px auto;
+	position: relative;
+
+}
+
+.field label{
+	position: absolute;
+	transition: all 3s ease-in;
+	-webkit-transition: all 3s ease-in;
+	-moz-transition: all 3s ease-in;
+	-ms-transition: all 3s ease-in;
+	-o-transition: all 3s ease-in;
+	color: white;
+}
+
+label.active{
+	position: relative;
+	transition: all 3s ease-in;
+	-webkit-transition: all 3s ease-in;
+	-moz-transition: all 3s ease-in;
+	-ms-transition: all 3s ease-in;
+	-o-transition: all 3s ease-in;
+}
+
+
+h2{
+	text-align: center;
+	color: red;
+}
+
+
+
+
+input {
+	font-size: 20px;
+	display: block;
+	width: 100%;
+	background: none;
+	border-bottom: 1px solid white;
+	color: rgba(255, 255, 255, 0.52)
+}
+
+
+input[type="submit"] {
+	color: black;
+	background: white;
+	padding: 5px;
+	width: 60%;
+	height: 31px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	margin: 20px auto;
+	margin-top: 50px;
+	border: none;
+	transition: all 0.5s ease-in;
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-ms-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
+}
+
+input[type="submit"]:hover{
+	background: #1d7fd4;
+	color: white;
+}
+
+.a{
+	text-align: center;
+	margin: 10px 0;
+}
+
+div a{
+	color: white;
+	
+}
+
+div a:active{
+	color: red;
+}
+
+@media(min-width: 1000px){
+	.container{
+		margin-top: 20%;
+	}
+}

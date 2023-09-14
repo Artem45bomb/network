@@ -1,0 +1,406 @@
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+	/*========== Colors ==========*/
+	--first-color: hsl(231, 48%, 56%);
+	--title-color: hsl(231, 24%, 20%);
+	--text-color: hsl(231, 4%, 45%);
+	--body-color: hsl(231, 100%, 99%);
+	--container-color: #fff;
+
+	/*========== Font and typography ==========*/
+	--body-font: 'Poppins', sans-serif;
+	--tiny-font-size: .625rem;
+}
+
+@media screen and (min-width: 968px) {
+	:root {
+		--tiny-font-size: .688rem;
+	}
+}
+
+/*=============== BASE ===============*/
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--body-font);
+	background-color: var(--body-color);
+	color: var(--text-color);
+	overflow: hidden;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*=============== NAVBAR ===============*/
+.container {
+	display: flex;
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+}
+
+/*Remove the property of 100vh, when inserting its content*/
+.container section {
+	padding: 2rem 0;
+	flex-shrink: 0;
+	flex-basis: 100vw;
+}
+
+.container h2 {
+	text-align: center;
+	color: var(--title-color);
+}
+
+.nav {
+	position: fixed;
+	bottom: 2rem;
+	left: 0;
+	right: 0;
+	width: 328px;
+	height: 72px;
+	background-color: var(--container-color);
+	box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
+	margin: 0 auto;
+	padding: 1.5rem .5rem;
+	border-radius: .65rem;
+	overflow: hidden;
+}
+
+.nav__list {
+	display: flex;
+	justify-content: center;
+	column-gap: 2rem;
+}
+
+.nav__link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.nav__link i {
+	font-size: 1.5rem;
+	color: var(--title-color);
+	z-index: 20;
+	transition: .3s;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-ms-transition: .3s;
+	-o-transition: .3s;
+}
+
+.nav__name {
+	font-size: var(--tiny-font-size);
+	position: absolute;
+	font-weight: 500;
+	transition: .4s;
+	transform: translateY(50px);
+	z-index: 20;
+	color: var(--body-color);
+	opacity: 0;
+}
+
+/* Indicator link */
+.indicator {
+	position: absolute;
+	left: 5px;
+	bottom: 0;
+	fill: var(--first-color);
+	transition: .3s;
+}
+
+/* Active link */
+.active-link i {
+	color: var(--body-color);
+}
+
+.active-link .nav__name {
+	opacity: 1;
+	transform: translateY(28px);
+}
+
+/* Move indicator */
+.nav__link:nth-child(1).active-link~.indicator {
+	transform: translateX(calc(56px * 0));
+}
+
+.nav__link:nth-child(2).active-link~.indicator {
+	transform: translateX(calc(56px * 1));
+}
+
+.nav__link:nth-child(3).active-link~.indicator {
+	transform: translateX(calc(56px * 2));
+}
+
+.nav__link:nth-child(4).active-link~.indicator {
+	transform: translateX(calc(56px * 3));
+}
+
+.nav__link:nth-child(5).active-link~.indicator {
+	transform: translateX(calc(56px * 4));
+}
+/*================Profile====================*/
+.profile{
+	&__container {
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+		width: 98vw;
+		border-radius:20px;
+		background:var(--container-color);
+		box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
+		margin: 10px auto;
+		-webkit-border-radius:20px;
+		-moz-border-radius:20px;
+		-ms-border-radius:20px;
+		-o-border-radius:20px;
+	}
+	&__image{
+		width: 70px;
+		height: 70px;
+		border:2px black solid ;
+		border-radius:50%;
+		-webkit-border-radius:50%;
+		-moz-border-radius:50%;
+		-ms-border-radius:50%;
+		-o-border-radius:50%;
+		background: 0 0 /100% 100% url('https://yt3.ggpht.com/ytc/AKedOLRnZ1AD08TRJrPs9ZG39oKUsYb9C1ceoUvDNlAubw=s900-c-k-c0x00ffffff-no-rj');
+		background-size: cover;
+}
+}
+
+
+
+//FRIENDS
+	.friends{
+		width: 98vw;
+		font-size: 20px;
+		border-radius:5px;
+		background: var(--container-color);
+		padding: 10px;
+		box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
+		margin: 0 auto;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		-ms-border-radius:5px;
+		-o-border-radius:5px;
+}
+/*===============Home========================*/
+
+.home{
+	&__profile{
+		width: 40px;
+		height: 40px;
+		border:1px black solid;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+		
+		background: 0 0 /100% 100% url('https://yt3.ggpht.com/ytc/AKedOLRnZ1AD08TRJrPs9ZG39oKUsYb9C1ceoUvDNlAubw=s900-c-k-c0x00ffffff-no-rj');
+		background-size: cover;
+}
+	&__find{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+			align-items: center;
+			column-gap: 20px;
+			padding: 10px 20px;
+			width: 98vw;
+			border-radius: 20px;
+			background: var(--container-color);
+			box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
+			margin: 10px auto;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			-ms-border-radius: 20px;
+			-o-border-radius: 20px;
+	}
+	&__panel{
+
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+		i{
+			font-size: 1.5rem;
+			color: var(--title-color);
+			transition: .3s;
+			-webkit-transition: .3s;
+			-moz-transition: .3s;
+			-ms-transition: .3s;
+			-o-transition: .3s;
+		}
+	}
+}
+
+.add{
+	font-size: 1.5rem;
+	color: black;
+}
+/*===============POSTS=======================*/
+.posts{
+	margin: 0 auto;
+	padding: 10px;
+	width: 98vw;
+	min-height: 70vh;
+	border-radius:10px;
+	background: var(--container-color);
+	box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-ms-border-radius:10px;
+	-o-border-radius:10px;
+}
+
+.post{
+	height: 40vh;
+	width: 30vw;
+	margin: 0 auto 5px auto;
+	background: #dedada88;
+	border-radius:	10px;
+	-webkit-border-radius:	10px;
+	-moz-border-radius:	10px;
+	-ms-border-radius:	10px;
+	-o-border-radius:	10px;
+	padding: 5px;
+	&__image{
+		width: 100%;
+		height: 85%;
+		background: #000;
+		border-radius: 5px	;
+		-webkit-border-radius: 5px	;
+		-moz-border-radius: 5px	;
+		-ms-border-radius: 5px	;
+		-o-border-radius: 5px	;
+		margin-bottom: 5px;
+	}
+	&__info{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+	&__profile{
+		width: 40px;
+		height: 40px;
+		border: 1px black solid;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+	}
+	&__user{
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+	}
+	&__like{
+		font-size: 1.5rem;
+		h2{
+			margin-left: 5px;
+			display: inline;
+		}
+	}
+}
+
+.post__like i:active{
+	color: red;
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+/* For small devices */
+@media screen and (max-width: 320px) {
+	.nav {
+		zoom: .8;
+	}
+}
+
+/* For large devices */
+@media screen and (min-width: 968px) {
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.nav {
+		zoom: 1.1;
+	}
+
+	.profile {
+		&__container {
+			width: 50vw;
+			padding: 10px 20px;
+		}
+	}
+	.friends{
+		width: 50vw;
+	}
+
+	.home{
+		&__find{
+			width: 40vw;
+			
+		}
+	}
+	.posts{
+		width: 40vw;
+	}
+}
+

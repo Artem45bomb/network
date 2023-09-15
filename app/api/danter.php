@@ -14,7 +14,6 @@ function setError($value,$url){
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
    if(!empty($_POST['email']) && !empty($_POST['password'])){
-   
    try{
    $pdo = new PDO("mysql:host=localhost;dbname=$dbname; port=$port; charset=UTF8",$username,$password);
    }

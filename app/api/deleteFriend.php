@@ -23,10 +23,7 @@ if (!empty($_POST['user']) && !empty($_POST['friend'])) {
 
    $pdo = null;
 
-   $json = json_encode($_POST);
-   $fs = fopen('../json/result.json', 'w');
-   fwrite($fs, $json);
-   fclose($fs);
+   
 }
 
 

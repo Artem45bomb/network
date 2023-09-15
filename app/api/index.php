@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+
+
+use Ramsey\Uuid\Uuid;
+
+require_once 'C:\xampp\htdocs\test\vendor/autoload.php';
 require_once "login.php";
 
 function get_post($string){
@@ -76,18 +81,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     header("Location: http://127.0.0.1:8080/test/error.html");
 	}
   else{
+  $uuid = (string)Uuid::uuid4();
   if(count($user_admin) > 0)
   {
-    $user_admin = new User_Admin(1,$password,$email);
+    $user_admin = new User_Admin($uuid,$password,$email);
     $_SESSION['user_admin'] = $user_admin;
   }
   else
   {
-    $user = new User(1,$password,$email);
+    $user = new User($uuid,$password,$email);
     $_SESSION['user'] = $user;
   }
-  $query = $pdo->prepare("INSERT INTO users VALUES (NULL, :passwords,:email,'Нет')");
-  $query->execute([':passwords' => $password,':email' => $email]);
+  $query = $pdo->prepare("INSERT INTO users VALUES (:id, :passwords,:email,'Нет')");
+  $query->execute([':id'=> $uuid,':passwords' => $password,':email' => $email]);
 
   $pdo = null;
 

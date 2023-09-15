@@ -10,12 +10,12 @@ if (!empty($_POST['user']) && !empty($_POST['friend'])) {
    print_r($exception->getMessage());
    }
 
-   $query = $pdo->prepare("INSERT INTO friends VALUES (:userId1, :userId2, 'Да')");
+   $query = $pdo->prepare("DELETE FROM friends WHERE userId1=:userId1 AND userId2=:userId2");
    $query->execute([
       ':userId1' => $_POST['user']['id'],
       ':userId2' => $_POST['friend']['id']
    ]);
-   $query = $pdo->prepare("INSERT INTO friends VALUES (:userId2, :userId1, 'Да')");
+   $query = $pdo->prepare("DELETE FROM friends WHERE userId1=:userId2 AND userId2=:userId1");
    $query->execute([
       ':userId1' => $_POST['user']['id'],
       ':userId2' => $_POST['friend']['id']
@@ -23,6 +23,10 @@ if (!empty($_POST['user']) && !empty($_POST['friend'])) {
 
    $pdo = null;
 
+   $json = json_encode($_POST);
+   $fs = fopen('../json/result.json', 'w');
+   fwrite($fs, $json);
+   fclose($fs);
 }
 
 

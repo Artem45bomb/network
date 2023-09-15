@@ -6,17 +6,46 @@ import axios from 'axios';
 
 
 
-function taskReducer(tasks, action) {
+async function taskReducer(tasks, action) {
 	switch (action.type) {
 		case 'added': {
 			//работает только смена запрос посылается но php не видит данные
-			
-			axios
-				.post('./api/addFriend.php', action.user);
+			axios.get('./json/user.json').then(json => {
+				axios.post('./api/addFriend.php', { 'user': json.data,'friend':action.user });
+			})
+			action.setAdd(!action.state);
+			return tasks;
+		}
+		case 'delete': {
+			axios.get('./json/user.json').then(json => {
+				axios.post('./api/deleteFriend.php', { 'user': json.data, 'friend': action.user });
+			})
 			action.setAdd(!action.state);
 			return tasks;
 		}
 	}
+}
+
+function addFriend(dispatch, isAdd, setAdd, user) {
+	dispatch(
+		{
+			type : 'added',
+			state : isAdd,
+			setAdd : setAdd,
+			user : user,
+		}
+	);
+}
+
+function deleteFriend(dispatch,isAdd,setAdd,user) {
+	dispatch(
+		{
+			type: 'delete',
+			state: isAdd,
+			setAdd: setAdd,
+			user: user,
+		}
+	);
 }
 
 export default function UserInfo(props) {
@@ -35,14 +64,7 @@ export default function UserInfo(props) {
 			<div className="panel-users">
 				<h2>{props.user.email}</h2>
 
-				<button className="add" onClick={() => dispatch(
-					{
-						type: 'added',
-						state: isAdd,
-						setAdd: setAdd,
-						user: props.user
-					}
-				)}>
+				<button className="add" onClick={() => { isAdd ? addFriend(dispatch, isAdd, setAdd, props.user) : deleteFriend(dispatch, isAdd, setAdd, props.user) }}>
 					{isAdd ? 'Добавить' : 'Удалить'}
 				</button>
 			</div>

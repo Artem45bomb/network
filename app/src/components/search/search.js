@@ -1,6 +1,7 @@
 import React, { useState, useReducer,useRef } from "react";
 import User from "./User/user";
 import UserInfo from "./User-info/user-info";
+import axios from "axios";
 
 function setRequest(method, url) {
 	return new Promise((resolve, reject) => {
@@ -16,6 +17,7 @@ function setRequest(method, url) {
 			}
 			catch (err) {
 				console.log("Запрос не удался ", err);
+				console.log(1);
 			}
 		};
 		xhr.send();
@@ -35,6 +37,7 @@ export default function Search() {
 	const [active, setActive] = useState(true);
 	const [value, setValue] = useState('');
 	const [user, setUser] = useState({});
+	const [email, setEmail] = useState('');
 
 	const [tasks, dispatch] = useReducer(tasksReducer,initial)
 
@@ -69,6 +72,7 @@ export default function Search() {
 	}
 
 	if (active) {
+		axios.get('./json/user.json').then(json => setEmail(json.data.email));
 		setRequest('GET', './json/users.json').then(json => {
 			dispatch({
 				type: 'added',
@@ -76,9 +80,10 @@ export default function Search() {
 			})
 			setActive(false);
 		});
+		
 	}
 
-	let results = tasks.filter(elem => elem.show === true).map((elem, index) => {
+	let results = tasks.filter(elem => elem.show === true && elem.email !== email).map((elem, index) => {
 		return <User setUser={setUser} key={index} value={elem} dispatch={dispatch} work={!work}/>
 	});
 

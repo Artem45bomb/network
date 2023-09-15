@@ -92,9 +92,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $user = new User($uuid,$password,$email);
     $_SESSION['user'] = $user;
   }
+  $_POST['id'] = $uuid;
   $query = $pdo->prepare("INSERT INTO users VALUES (:id, :passwords,:email,'Нет')");
   $query->execute([':id'=> $uuid,':passwords' => $password,':email' => $email]);
-
   $pdo = null;
 
   $json = json_encode($_POST);

@@ -102,6 +102,6 @@ gulp.task("watch", () => {
 	gulp.watch("./vendor/**/*.*", gulp.parallel("vendor"))
 });
 
-gulp.task("build", gulp.parallel("copy-html", "build-js", "build-sass", "copy-api", "copy-assets", "copy-json", "settings-composer"));
+gulp.task("build", gulp.parallel("copy-html", "build-js", "build-sass", "copy-api", "copy-assets", "copy-json","vendor"));
 
 gulp.task("default", gulp.parallel("watch", "build"));

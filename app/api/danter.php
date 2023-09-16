@@ -5,9 +5,11 @@ function get_post($string){
    return $_POST[$string];
 }
 
-function setError($value,$url){
+
+
+function setJSON($value,$url){
    $json = json_encode($value);
-   $fs = fopen('../json/error.json', 'w');
+   $fs = fopen($url, 'w');
 	fwrite($fs, $json);
 	fclose($fs);
 }
@@ -27,32 +29,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   	$query = $pdo->prepare("SELECT * FROM users WHERE password=:password AND email=:email");
    $query->execute([':password' => $password,':email' => $email]);
 	$user=$query->fetchAll();
-
+   
+   
 
 if (count($user) > 0) {
 	foreach($user as $row){
       if($row['ban']==='Да'){
       $pdo = null;
-      $json = json_encode( "Вы забанены");
-      $fs = fopen('../json/error.json', 'w');
-	   fwrite($fs, $json);
-	   fclose($fs);
+      setJSON("Вы забанены",'../json/error.json');
       header("Location: http://127.0.0.1:8080/test/error.html");
       }
       else{
-      $json = json_encode($row);
-	   $fs = fopen('../json/user.json', 'w');
-	   fwrite($fs, $json);
-	   fclose($fs);
+         try{
+         $query2 = $pdo->prepare("SELECT * FROM friends WHERE userId1=:userId1");
+         $query2->execute(['userId1' => $row['id']]);
+         $friends = $query2->fetchAll();
+         }
+         catch(error){
+            echo error."Hello";
+         }
+
+         if(count($friends)> 0){
+            setJSON($friends,'../json/friends.json');
+         }
+
+         setJSON($row,'../json/user.json');
       $pdo = null;
       header("Location: http://127.0.0.1:8080/test/api/setUsers.php");
       }
 	}
 } else {
-   $json = json_encode( "Пользователь не найден");
-   $fs = fopen('../json/error.json', 'w');
-	fwrite($fs, $json);
-	fclose($fs);
+   setJSON("Пользователь не найден",'../json/error.json');
    $pdo = null;
    header("Location: http://127.0.0.1:8080/test/error.html");
 }

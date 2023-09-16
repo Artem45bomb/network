@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $query = $pdo->prepare("SELECT * FROM users WHERE password=:password AND email=:email");
   $query->execute([':password' => $password,':email' => $email]);
 
-  $query2 = $pdo->prepare("SELECT * FROM  admins WHERE password=:password AND email=:email");
+  $query2 = $pdo->prepare("SELECT * FROM  adnins WHERE password=:password AND email=:email");
   $query2->execute([':password' => $password,':email' => $email]);
 
 	$user=$query->fetchAll();

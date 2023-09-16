@@ -48,13 +48,33 @@ function deleteFriend(dispatch,isAdd,setAdd,user) {
 	);
 }
 
+function checkedFrind(user,setAdd) {
+	axios.get('./json/friends.json').then(json => {
+		for (const elem of json.data) {
+			if (elem.userId2 === user.id) {
+				return false
+			}
+			else {
+				return true;
+			}
+		}
+	})
+	
+}
+
 export default function UserInfo(props) {
 	const [isAdd, setAdd] = useState(true);
 	const initial = [];
-
+	const [active, setActive] = useState(true);
 	const [tasks, dispatch] = useReducer(taskReducer, initial);
+	
+	
+	if (active && props.user.email !== undefined) {
+		setAdd(checkedFrind(props.user));
+		setActive(false);
+	}
 
-
+	
 	return (<div ref={props.ret} className="users-info">
 		<div className="fon">
 			<i className="ri-arrow-left-line " onClick={() => props.dispatch({

@@ -49,11 +49,10 @@ if (count($user) > 0) {
             echo error."Hello";
          }
 
-         if(count($friends)> 0){
             setJSON($friends,'../json/friends.json');
-         }
 
          setJSON($row,'../json/user.json');
+         
       $pdo = null;
       header("Location: http://127.0.0.1:8080/test/api/setUsers.php");
       }

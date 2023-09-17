@@ -18,11 +18,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
 
 :root {
 	/*========== Colors ==========*/
-	--first-color: hsl(231, 48%, 56%);
+	--first-color: hsl(262, 74%, 60%);
 	--title-color: hsl(231, 24%, 20%);
 	--text-color: hsl(231, 4%, 45%);
 	--body-color: hsl(231, 100%, 99%);
-	--user-info: hsl(230, 33%, 86%);
+	--user-info: hsla(257, 94%, 82%, 0.831);
 	--container-color: #fff;
 
 	/*========== Font and typography ==========*/
@@ -86,7 +86,7 @@ body {
 
 .search__panel i{
 	font-size: 1.5rem;
-	color: rgb(36, 93, 193);
+	color: var(--first-color);
 	margin-left: 10px;
 }
 
@@ -106,7 +106,7 @@ body {
 .hr{
 	width: 100%;
 	height: 1px;
-	background: rgb(36, 93, 193);
+	background: var(--first-color);
 }
 
 h2{
@@ -177,7 +177,7 @@ h2{
 	width: 100%;
 	padding: 5px;
 	height: 100%;
-	background: rgb(152, 157, 187);
+	background: rgb(81, 34, 199);
 	border-radius:0 0 10px 10px ;
 	-webkit-border-radius:0 0 10px 10px ;
 	-moz-border-radius:0 0 10px 10px ;
@@ -193,12 +193,18 @@ h2{
 
 button.add{
 	padding: 3px;
+	color: rgb(155, 144, 144);
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-ms-border-radius: 5px;
 	-o-border-radius: 5px;
-	background: rgba(228, 85, 116, 0.539);
+	background: rgba(108, 12, 95, 0.539);
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-ms-transition: 0.5s;
+	-o-transition: 0.5s;
 }
 
 button.add:active{
@@ -227,4 +233,14 @@ font-size: 1.5rem;
 	-o-border-radius: 50%;
 	background: 0 0 /100% 100% url('https://yt3.ggpht.com/ytc/AKedOLRnZ1AD08TRJrPs9ZG39oKUsYb9C1ceoUvDNlAubw=s900-c-k-c0x00ffffff-no-rj');
 	background-size: cover;
+}
+
+@media  screen and (max-width: 968px) {
+	.search{
+		width: 95vw;
+	}
+	.users-info{
+		width: 40vw;
+		left: calc(50% - 40vw /2);
+	}
 }

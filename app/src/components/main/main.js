@@ -58,7 +58,7 @@ export default class Main extends React.Component {
 				this.setState({ show: false });
 				this.setState({
 					user: {
-						email: json.email,
+						...json,
 					}
 				});
 			});
@@ -93,7 +93,7 @@ export default class Main extends React.Component {
 
 				<div className={"container"}>
 					<Home value={this.state.value[0]} id={this.state.id[0]} />
-					<Profile id={this.state.id[1]} value={this.state.value[1]} email={this.state.user.email} />
+					<Profile id={this.state.id[1]} value={this.state.value[1]} email={this.state.user.email} user={this.state.user} />
 					<section id={this.state.id[2]}>
 						<h2>{this.state.value[2]}</h2>
 					</section>

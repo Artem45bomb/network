@@ -199,7 +199,7 @@ a {
 		display: flex;
 		align-items: center;
 		column-gap: 20px;
-		width: 98vw;
+		width: 95vw;
 		border-radius:20px;
 		background:var(--container-color);
 		box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
@@ -227,7 +227,7 @@ a {
 
 //FRIENDS
 	.friends{
-		width: 98vw;
+		width: 95vw;
 		font-size: 20px;
 		border-radius:5px;
 		background: var(--container-color);
@@ -262,7 +262,7 @@ a {
 			align-items: center;
 			column-gap: 20px;
 			padding: 10px 20px;
-			width: 98vw;
+			width: 95vw;
 			border-radius: 20px;
 			background: var(--container-color);
 			box-shadow: 0 8px 32px hsla(231, 44%, 45%, .2);
@@ -297,7 +297,7 @@ a {
 .posts{
 	margin: 0 auto;
 	padding: 10px;
-	width: 98vw;
+	width: 95vw;
 	min-height: 70vh;
 	border-radius:10px;
 	background: var(--container-color);
@@ -404,3 +404,14 @@ a {
 	}
 }
 
+@media  screen and (max-width: 968px)   {
+	.post{
+		width: 80vw;
+		height: 50vh;
+	}
+	.profile{
+		&__container{
+			padding: 5px;
+		}
+	}
+}

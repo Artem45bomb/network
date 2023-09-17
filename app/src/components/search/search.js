@@ -1,4 +1,4 @@
-import React, { useState, useReducer,useRef } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import User from "./User/user";
 import UserInfo from "./User-info/user-info";
 import axios from "axios";
@@ -32,14 +32,14 @@ export default function Search() {
 	const initial = [];
 	let ret = useRef(null);
 	let search = useRef(null);
-	
-	const [work,setWork] = useState(false)
+
+	const [work, setWork] = useState(false)
 	const [active, setActive] = useState(true);
 	const [value, setValue] = useState('');
 	const [user, setUser] = useState({});
 	const [email, setEmail] = useState('');
 
-	const [tasks, dispatch] = useReducer(tasksReducer,initial)
+	const [tasks, dispatch] = useReducer(tasksReducer, initial)
 
 	function tasksReducer(tasks, action) {
 		switch (action.type) {
@@ -58,11 +58,11 @@ export default function Search() {
 				if (ret.current.className === 'users-info') {
 					ret.current.className = ret.current.className + ' active';
 					search.current.className = search.current.className + ' active';
-				} 
+				}
 				setWork(true);
 				return tasks;
 			}
-			case 'closed':{
+			case 'closed': {
 				setWork(false);
 				ret.current.className = 'users-info';
 				search.current.className = 'search';
@@ -80,11 +80,11 @@ export default function Search() {
 			})
 			setActive(false);
 		});
-		
+
 	}
 
 	let results = tasks.filter(elem => elem.show === true && elem.email !== email).map((elem, index) => {
-		return <User setUser={setUser} key={index} value={elem} dispatch={dispatch} work={!work}/>
+		return <User setUser={setUser} key={index} value={elem} dispatch={dispatch} work={!work} />
 	});
 
 
@@ -93,7 +93,7 @@ export default function Search() {
 			<div ref={search} className="search" >
 				<div className="search__panel">
 					<a href="./main.html"><i className="ri-arrow-left-line a"></i></a>
-					<input disabled={work} placeholder="Поиск"  value={value} onChange={e => {
+					<input disabled={work} placeholder="Поиск" value={value} onChange={e => {
 						setValue(e.target.value);
 						dispatch({
 							type: 'onChange',
@@ -104,7 +104,7 @@ export default function Search() {
 				<div className="hr"></div>
 				<h2>Пользователи</h2>
 				<div className="users">
-				{results}
+					{results}
 				</div>
 			</div>
 			<UserInfo dispatch={dispatch} ret={ret} user={user} />
